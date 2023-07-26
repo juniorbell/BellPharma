@@ -1,0 +1,103 @@
+<div class="container">
+  <h1 mat-dialog-title style=" justify-content: center; margin-left: 9rem; font-size: x-large; color: #ffffff; font-family: 'Bebas Neue', sans-serif;">{{operacao}} Medicamento</h1>
+  <mat-spinner  *ngIF="loading" [diameter]="3"></mat-spinner>
+</div>
+<form  [formGroup]="form" (ngSubmit)="addMedicamento()">
+  <mat-dialog-content>
+
+    <div class="row">
+        <div class="column">
+              <mat-form-field appearance="fill">
+                <mat-label>Laboratório</mat-label>
+                <input formControlName="Laboratorio" matInput placeholder="Laboratório responsável">
+              </mat-form-field>
+              <div class="error">
+                <span *ngIf="form.get('Laboratorio')?.hasError('required') && form.get('Laboratorio')?.touched">
+                 Laboratório é um campo <strong>obrigatório</strong>  
+                </span>
+              </div>
+        </div>
+    </div>
+    
+      <!-- formulario -->
+    
+    <div class="row">
+        <div class="column">
+            <mat-form-field appearance="fill">
+                <mat-label>Nome do Medicamento</mat-label>
+                <input formControlName="nome_produto" matInput placeholder="Insira o nome do  medicamento">
+            </mat-form-field>
+            <div class="error">
+              <span *ngIf="form.get('nome_produto')?.hasError('required') && form.get('nome_produto')?.touched">
+                Nome do medicamento é um campo <strong>obrigatório</strong>  
+              </span>
+            </div>
+            <mat-form-field appearance="fill">
+                    <mat-label>Forma Farmaceutica</mat-label>
+                    <mat-select formControlName="formaFarma">
+                      <mat-option *ngFor="let item of tipoForma" [value]="item">
+                        {{item}}
+                      </mat-option>
+                    </mat-select>
+            </mat-form-field>
+        </div>  
+    </div>
+    
+      <mat-form-field appearance="fill">
+        <mat-label>Descrição</mat-label>
+        <input formControlName="descricao"matInput placeholder="Insira a descrição">
+      </mat-form-field>
+      <div class="error">
+        <span *ngIf="form.get('descricao')?.hasError('required') && form.get('descricao')?.touched">
+          Descrição é um campo<strong>obrigatório</strong>  
+        </span>
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>Quantidade</mat-label>
+        <input formControlName="quantidade"matInput placeholder="Coloque a quantidade">
+      </mat-form-field>
+      <div class="error">
+        <span *ngIf="form.get('quantidade')?.hasError('required') && form.get('quantidade')?.touched">
+          Quantidade é um campo <strong>obrigatório</strong>  
+        </span>
+      </div>
+      <div class="row">
+        <div class="column">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Data de Fabricação</mat-label>
+            <input formControlName="data_lan" matInput [matDatepicker]="picker">
+            <mat-hint></mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+          </mat-form-field>
+          <div class="error">
+            <span *ngIf="form.get('data_lan')?.hasError('required') && form.get('data_lan')?.touched">
+              Data de Fabricação é um campo <strong>obrigatório</strong>  
+            </span>
+          </div>
+        </div>
+        <div class="column">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Data de Validade</mat-label>
+            <input formControlName="data_val"matInput [matDatepicker]="picker">
+            <mat-hint></mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+          </mat-form-field>
+          <div class="error">
+            <span *ngIf="form.get('data_val')?.hasError('required') && form.get('data_val')?.touched">
+              Data de Validade é um campo <strong>obrigatório</strong>  
+            </span>
+          </div>
+        </div>
+      </div>
+   
+
+      <!-- fimformulario -->
+    </mat-dialog-content>
+    <mat-dialog-actions align="end" >
+      <button class="cancelar-btn btn-2" type="submit" (click)="cancelar()"><i class="fa-solid fa-xmark"></i> Cancelar</button>
+      <button type="submit" class="add-btn btn-2" cdkFocusInitial (click)="registrar()" color="sucess"><i class="fa-solid fa-check"></i>  Salvar</button>
+    </mat-dialog-actions>
+</form>
+

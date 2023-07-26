@@ -1,0 +1,117 @@
+mat-form-field {
+    width: 100%;
+}
+
+.row {
+    display: flex;
+}
+
+.column {
+    flex: 40%;
+    margin: 0px 5px;
+}
+ .mat-dialog-title{
+    text-align: center;
+    font-size: x-large;
+    color: #0d47a1;
+    font-weight: bold;
+
+}
+
+.error {
+    color:#B0304B;
+    margin-top: -10px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+.h2{
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #B0304B;
+}
+
+
+/* botao cancelar */
+
+.btn-2 {
+    border: none;  
+  }
+  .btn-2:before {
+    height: 0%;
+    width: 2px;
+  }
+  .btn-2:hover {
+    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+                -4px -4px 6px 0 rgba(116, 125, 136, .5), 
+                inset -4px -4px 6px 0 rgba(255,255,255,.2),
+                inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+  background-color: #ffffff;
+  color:#e0b835}
+  button {
+    margin: 10px;
+  }
+  .cancelar-btn {
+    width:o.5rem;
+    height: 2.5rem;
+    color:#ffffff;
+    border-radius: 50px 50px;
+    padding: 10px 40px;
+    font-family: 'Bebas Neue', 'sans-seri';
+    font-size: 20px;
+    background: #b38e17;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+  }
+
+/* botão add */
+ .btn-2 {
+    border: none;  
+  }
+  .btn-2:before {
+    height: 0%;
+    width: 2px;
+  }
+  .btn-2:hover {
+    box-shadow:  4px 4px 6px 0 rgba(255,255,255,.5),
+                -4px -4px 6px 0 rgba(116, 125, 136, .5), 
+                inset -4px -4px 6px 0 rgba(255,255,255,.2),
+                inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+  background-color: #ffffff;
+  color:#e0b835}
+  button {
+    margin: 5px;
+  }
+  .add-btn {
+    width:o.5rem;
+    height: 2.5rem;
+    color:#ffffff;
+    border-radius: 50px 50px;
+    padding: 10px 40px;
+    font-family: 'Bebas Neue', 'sans-seri';
+    font-size: 20px;
+    background: #b38e17;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+  }
+
+  ::ng-deep .mat-mdc-text-field-wrapper{
+    border-radius: 25px;
+    color: transparent;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  }
+
