@@ -15,7 +15,7 @@ import { EditMedicamentoComponent } from '../edit-medicamento/edit-medicamento.c
   styleUrls: ['./list-medicamento.component.css']
 })
 export class ListMedicamentoComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['id', 'nome_produto', 'forma_farmaceutica', 'descricao', 'laboratorio', 'quantidade', 'data_lan', 'data_val', 'acoes'];
+  displayedColumns: string[] = ['nome_produto', 'forma_farmaceutica', 'descricao', 'laboratorio', 'quantidade', 'data_lan', 'data_val', 'acoes'];
   dataSource: MatTableDataSource<Medicamento>;
   loading: boolean = false;
 

@@ -14,7 +14,7 @@
   .splash img {
     width: 450px;
     height: 200px;
-    animation: fadeOut 1.5s ease-in-out;
+    animation: fadeOut 2s ease-in-out;
   }
   
   .content {
@@ -36,6 +36,7 @@
     width: 100%;
     background-color: #ffffff;
     padding: 10px 0;
+    z-index: 1000;
   }
   
   .footer img {

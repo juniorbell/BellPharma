@@ -22,13 +22,13 @@ export class EditMedicamentoComponent implements OnInit {
     private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any,) {
     this.maxDate = new Date();
     this.form = this.fb.group({
-      Laboratorio: ['', Validators.required],
-      nome_produto: ['', Validators.required],
-      forma_farmaceutica: ['', Validators.required],
-      descricao: ['', Validators.required],
-      quantidade: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
-      data_val: ['', Validators.required],
-      data_lan: ['', Validators.required],
+      Laboratorio: [null],           
+      nome_produto: [null],          
+      forma_Farmaceutica: [null],    
+      descricao: [null],             
+      quantidade: [null],            
+      data_val: [null],              
+      data_lan: [null] 
     })
     this.id = data.id;
     // this.id=data.id;
@@ -84,7 +84,7 @@ export class EditMedicamentoComponent implements OnInit {
         descricao: data.descricao,
         quantidade: data.quantidade,
         data_lan: new Date(data.data_lan),
-        data_val: new Date(data.data_val),
+        data_val: new Date(data.data_val)
       })
     })
   }
@@ -98,7 +98,7 @@ export class EditMedicamentoComponent implements OnInit {
   }
 
   addMedicamento() {
-    console.log(this.form)
+    console.log('houve um erro ')
   }
 
   msgExito(operacao: string) {

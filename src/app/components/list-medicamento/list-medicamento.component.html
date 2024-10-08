@@ -13,14 +13,14 @@
       <!--  -->
     <mat-card-content>
         <table style="width: 100rem;" matSort mat-table [dataSource]="dataSource" class="mat-elevation-z15">
-
+<!-- 
             <ng-container  matColumnDef="id">
               <th mat-header-cell *matHeaderCellDef mat-sort-header class="titulo"> ID </th>
               <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-            </ng-container>
+            </ng-container> -->
 
               <ng-container matColumnDef="nome_produto">
-                <th mat-header-cell *matHeaderCellDef class="titulo"> Nome do Medicamento </th>
+                <th mat-header-cell *matHeaderCellDef class="titulo"> Nome </th>
                 <td mat-cell *matCellDef="let element"> {{element.nome_produto}} </td>
               </ng-container>
 
