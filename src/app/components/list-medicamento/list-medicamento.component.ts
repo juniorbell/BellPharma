@@ -15,7 +15,7 @@ import { EditMedicamentoComponent } from '../edit-medicamento/edit-medicamento.c
   styleUrls: ['./list-medicamento.component.css']
 })
 export class ListMedicamentoComponent implements OnInit, AfterViewInit {
-  displayedColumns: string[] = ['nome_produto', 'forma_farmaceutica', 'descricao', 'laboratorio', 'quantidade', 'data_lan', 'data_val', 'acoes'];
+  displayedColumns: string[] = ['nome', 'forma_farmaceutica', 'descricao', 'laboratorio', 'quantidade', 'data_lan', 'data_val', 'acoes'];
   dataSource: MatTableDataSource<Medicamento>;
   loading: boolean = false;
 
@@ -83,7 +83,7 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
 
   msgExito() {
     this._snackBar.open('Medicamento Excluído com Sucesso', '', {
-      duration: 2000
+      duration: 4000
     })
   }
 

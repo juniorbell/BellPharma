@@ -12,53 +12,53 @@
       </div>
       <!--  -->
     <mat-card-content>
-        <table style="width: 100rem;" matSort mat-table [dataSource]="dataSource" class="mat-elevation-z15">
+        <table style="width: auto;" matSort mat-table [dataSource]="dataSource" class="mat-elevation-z15">
 <!-- 
             <ng-container  matColumnDef="id">
               <th mat-header-cell *matHeaderCellDef mat-sort-header class="titulo"> ID </th>
               <td mat-cell *matCellDef="let element"> {{element.id}} </td>
             </ng-container> -->
 
-              <ng-container matColumnDef="nome_produto">
+              <ng-container matColumnDef="nome">
                 <th mat-header-cell *matHeaderCellDef class="titulo"> Nome </th>
-                <td mat-cell *matCellDef="let element"> {{element.nome_produto}} </td>
+                <td mat-cell *matCellDef="let element" class="center-align">{{element.nome}} </td>
               </ng-container>
 
               <ng-container matColumnDef="forma_farmaceutica">
                 <th mat-header-cell *matHeaderCellDef class="titulo"> Forma Farmaceutica </th>
-                <td mat-cell *matCellDef="let element"> {{element.forma_farmaceutica}} </td>
+                <td mat-cell *matCellDef="let element" class="center-align"> {{element.forma_farmaceutica}} </td>
               </ng-container>
 
               <ng-container matColumnDef="descricao">
                 <th mat-header-cell *matHeaderCellDef class="titulo"> Descrição </th>
-                <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+                <td mat-cell *matCellDef="let element" class="center-align"> {{element.descricao}} </td>
               </ng-container>
 
               <ng-container matColumnDef="laboratorio">
                 <th mat-header-cell *matHeaderCellDef class="titulo"> Laboratório </th>
-                <td mat-cell *matCellDef="let element"> {{element.laboratorio}} </td>
+                <td mat-cell *matCellDef="let element" class="center-align"> {{element.laboratorio}} </td>
               </ng-container>
 
               <ng-container matColumnDef="quantidade">
                 <th mat-header-cell *matHeaderCellDef class="titulo"> Quantidade </th>
-                <td mat-cell *matCellDef="let element"> {{element.quantidade}} </td>
+                <td mat-cell *matCellDef="let element" class="center-align"> {{element.quantidade}} </td>
               </ng-container>
 
               <ng-container matColumnDef="data_lan">
                 <th mat-header-cell *matHeaderCellDef class="titulo"> Data de Lançamento </th>
-                <td mat-cell *matCellDef="let element"> {{element.data_lan | date:'dd/mm/yyyy'}} </td>
+                <td mat-cell *matCellDef="let element" class="center-align"> {{element.data_lan | date:'dd/mm/yyyy'}} </td>
               </ng-container>
 
               <ng-container matColumnDef="data_val">
                 <th mat-header-cell *matHeaderCellDef class="titulo"> Data de Validade</th>
-                <td mat-cell *matCellDef="let element"> {{element.data_val | date:'dd/mm/yyyy'}} </td>
+                <td mat-cell *matCellDef="let element" class="center-align"> {{element.data_val | date:'dd/mm/yyyy'}} </td>
               </ng-container>
 
               <ng-container matColumnDef="acoes">
                 <th mat-header-cell *matHeaderCellDef></th>
-                <td mat-cell *matCellDef="let element">  
-                    <mat-icon (click)="addEditMedicamento(element.id)"class="btnedit" matTooltip="Editar {{element.nome_produto}}"> edit</mat-icon>
-                    <mat-icon (click)="deleteMedicamento(element.id)" class="btndelete"matTooltip="Excluir  {{element.nome_produto}}">delete</mat-icon>           
+                <td mat-cell *matCellDef="let element" style="justify-content: space-between;">  
+                    <mat-icon (click)="addEditMedicamento(element.id)"class="btnedit" matTooltip="Editar {{element.nome_produto}}" class="center-align"> <i class="fa-solid fa-pencil"></i></mat-icon>
+                    <mat-icon (click)="deleteMedicamento(element.id)" class="btndelete"matTooltip="Excluir  {{element.nome_produto}}" class="center-align"><i class="fa-solid fa-trash"></i></mat-icon>           
                  </td>
               </ng-container>
           

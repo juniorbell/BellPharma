@@ -14,7 +14,7 @@ export class MedicamentoService {
 
   constructor(private http: HttpClient) {
     this.myAppUrl = environment.endpoint;
-    this.myApiUrl = 'api/medicamentos'
+    this.myApiUrl = 'api/medicamentos/'
 
   }
 
