@@ -7,7 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Medicamento } from 'src/app/interfaces/medicamento';
 import { MedicamentoService } from 'src/app/services/medicamento.service';
 import { EditMedicamentoComponent } from '../edit-medicamento/edit-medicamento.component';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-medicamento',
@@ -74,12 +74,35 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
   }
 
   deleteMedicamento(id: number) {
+    Swal.fire({
+      title: 'Você tem certeza?',
+      text: 'Você não poderá reverter essa situação',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Excluir',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => { 
+    if(result.isConfirmed) {
     this._medicamentoService.deleteMedicamento(id).subscribe(() => {
       this.obterMedicamentos();
       this.msgExito();
-    })
-
-  }
+      Swal.fire ({
+        title: 'Excluído!',
+        text: 'O medicamento foi excluido com sucesso.',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
+     });
+    } else if (result.isDismissed) {
+      Swal.fire({
+        title: 'Cancelado',
+        text: 'Cancelada com sucesso.',
+        icon: 'info',
+        confirmButtonText: 'OK'
+      });
+    }
+  });
+}
 
   msgExito() {
     this._snackBar.open('Medicamento Excluído com Sucesso', '', {
