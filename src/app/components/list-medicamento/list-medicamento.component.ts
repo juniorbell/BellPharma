@@ -87,8 +87,6 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
     })
   }
 
-
-
 }
 
 
