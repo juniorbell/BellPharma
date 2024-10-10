@@ -23,7 +23,7 @@ export class EditMedicamentoComponent implements OnInit {
     this.maxDate = new Date();
     this.form = this.fb.group({
       laboratorio: [null, Validators.required],           
-      nome_produto: [null, Validators.required],          
+      nome: [null, Validators.required],          
       forma_farmaceutica: [null],    
       descricao: [null],             
       quantidade: [null],            
@@ -33,12 +33,10 @@ export class EditMedicamentoComponent implements OnInit {
     this.id = data.id;
   }
   addEditMedicamento() {
-    if (!this.form.valid) {
-      return;
-    }
+    if (this.form.valid) {
     const medicamento: Medicamento = {
       laboratorio: this.form.value.laboratorio,
-      nome_produto: this.form.value.nome_produto,
+      nome: this.form.value.nome,
       forma_farmaceutica: this.form.value.forma_farmaceutica,
       descricao: this.form.value.descricao,
       quantidade: this.form.value.quantidade,
@@ -65,7 +63,8 @@ export class EditMedicamentoComponent implements OnInit {
         this.addMedicamento(); // Mensagem de erro
       });
     }
-  }
+  } 
+}
 
 
 
@@ -81,29 +80,33 @@ export class EditMedicamentoComponent implements OnInit {
 
   }
   getMedicamento(id: number) {
-    this._medicamentoService.getMedicamento(id).subscribe(data => {
+    this._medicamentoService.getMedicamento(id).subscribe(data => {      
       this.form.setValue({
         laboratorio: data.laboratorio || '', // Defina um valor padrão
-        nome_produto: data.nome_produto || '', // Certifique-se de que este campo não está vazio
+        nome: data.nome || '', // Certifique-se de que este campo não está vazio
         forma_farmaceutica: data.forma_farmaceutica || '',
         descricao: data.descricao || '',
         quantidade: data.quantidade || null,
         data_lan: data.data_lan ? new Date(data.data_lan) : null,
         data_val: data.data_val ? new Date(data.data_val) : null,
       });
-    })
+    }, error => {
+      console.log ('erro ao consultar', error);
+    });
+    
   }
+
 
   cancelar() {
     this.dialogRef.close(false);
   }
 
   registrar() {
-
+    this.addEditMedicamento();
   }
 
   addMedicamento() {
-    console.log('houve um erro ')
+    this.addEditMedicamento();
   }
 
   msgExito(operacao: string) {

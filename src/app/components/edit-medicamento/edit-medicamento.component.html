@@ -24,14 +24,14 @@
         <div class="column">
             <mat-form-field appearance="fill">
                 <mat-label>Nome do Medicamento</mat-label>
-                <input formControlName="nome_produto" matInput placeholder="Insira o nome do  medicamento">
+                <input formControlName="nome" matInput placeholder="Insira o nome do  medicamento">
             </mat-form-field>
             <div class="error">
           
             </div>
             <mat-form-field appearance="fill">
                     <mat-label>Forma Farmaceutica</mat-label>
-                    <mat-select formControlName="forma_farmaceutica">
+                    <mat-select formControlName="forma_farmaceutica" required>
                       <mat-option *ngFor="let item of tipoForma" [value]="item">
                         {{item}}
                       </mat-option>
@@ -60,27 +60,27 @@
         <div class="column">
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Data de Fabricação</mat-label>
-            <input formControlName="data_lan" matInput [matDatepicker]="picker">
+            <input formControlName="data_lan" matInput [matDatepicker]="lanPicker">
             <mat-hint></mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker touchUi #picker></mat-datepicker>
+            <mat-datepicker-toggle matIconSuffix [for]="lanPicker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #lanPicker></mat-datepicker>
           </mat-form-field>
           <div class="error">
            
           </div>
         </div>
-        <div class="column">
-          <mat-form-field class="example-full-width" appearance="fill">
+        <div>
+           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Data de Vencimento</mat-label>
-            <input formControlName="data_val" matInput [matDatepicker]="picker">
+            <input formControlName="data_val" matInput [matDatepicker]="valPicker">
             <mat-hint></mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker touchUi #picker></mat-datepicker>
+            <mat-datepicker-toggle matIconSuffix [for]="valPicker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #valPicker></mat-datepicker>
           </mat-form-field>
           <div class="error">
            
-          </div>
         </div>
+      </div>
       </div>
    
   
@@ -88,7 +88,7 @@
     </mat-dialog-content>
     <mat-dialog-actions align="end" >
       <button class="cancelar-btn btn-2" type="submit" (click)="cancelar()"><i class="fa-solid fa-xmark"></i> Cancelar</button>
-      <button type="submit" class="add-btn btn-2" cdkFocusInitial (click)="registrar()" color="sucess"><i class="fa-solid fa-check"></i>  Salvar</button>
+      <button type="submit" class="add-btn btn-2" cdkFocusInitial (click)="registrar()" color="sucess"><i class="fa-solid fa-check"></i>Salvar</button>
     </mat-dialog-actions>
 </form>
 

@@ -1,6 +1,6 @@
 export interface Medicamento {
     id?: number;
-    nome_produto: string;
+    nome: string;
     forma_farmaceutica: string;
     descricao: string;
     laboratorio: string;
