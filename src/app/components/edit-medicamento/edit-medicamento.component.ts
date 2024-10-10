@@ -19,46 +19,52 @@ export class EditMedicamentoComponent implements OnInit {
   operacao: string = "Adicionar "
 
   constructor(public dialogRef: MatDialogRef<EditMedicamentoComponent>, private fb: FormBuilder, private _medicamentoService: MedicamentoService,
-    private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any,) {
+    private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.maxDate = new Date();
     this.form = this.fb.group({
-      Laboratorio: [null],           
-      nome_produto: [null],          
-      forma_Farmaceutica: [null],    
+      laboratorio: [null, Validators.required],           
+      nome_produto: [null, Validators.required],          
+      forma_farmaceutica: [null],    
       descricao: [null],             
       quantidade: [null],            
       data_val: [null],              
       data_lan: [null] 
-    })
+    });
     this.id = data.id;
-    // this.id=data.id;
   }
   addEditMedicamento() {
-    if (this.form.valid) {
+    if (!this.form.valid) {
       return;
     }
     const medicamento: Medicamento = {
       laboratorio: this.form.value.laboratorio,
       nome_produto: this.form.value.nome_produto,
-      forma_farmaceutica: this.form.value.tipoForma,
+      forma_farmaceutica: this.form.value.forma_farmaceutica,
       descricao: this.form.value.descricao,
       quantidade: this.form.value.quantidade,
       data_lan: this.form.value.data_lan.toISOString().slice(0, 10),
       data_val: this.form.value.data_val.toISOString().slice(0, 10),
-    }
+    };
     this.loading = true;
-    if (this.id == undefined) {
+    if (this.id === undefined) {
       this._medicamentoService.addMedicamento(medicamento).subscribe(() => {
         this.msgExito('Adicionada com sucesso');
-      })
-    }
-    else {
-      this._medicamentoService.updateMedicamento(this.id, medicamento).subscribe(data => {
+        this.dialogRef.close(true); // Fechar o diálogo após a adição
+      }, error => {
+        console.error('Erro ao adicionar medicamento:', error);
+        this.loading = false;
+        this.addMedicamento(); // Mensagem de erro
+      });
+    } else {
+      this._medicamentoService.updateMedicamento(this.id, medicamento).subscribe(() => {
         this.msgExito('atualizada com sucesso');
-      })
+        this.dialogRef.close(true); // Fechar o diálogo após a atualização
+      }, error => {
+        console.error('Erro ao atualizar medicamento:', error);
+        this.loading = false;
+        this.addMedicamento(); // Mensagem de erro
+      });
     }
-    this.loading = false;
-    this.dialogRef.close(true);
   }
 
 
@@ -77,15 +83,14 @@ export class EditMedicamentoComponent implements OnInit {
   getMedicamento(id: number) {
     this._medicamentoService.getMedicamento(id).subscribe(data => {
       this.form.setValue({
-        id: data.id,
-        laboratorio: data.laboratorio,
-        nome_produto: data.nome_produto,
-        tipoForma: data.forma_farmaceutica,
-        descricao: data.descricao,
-        quantidade: data.quantidade,
-        data_lan: new Date(data.data_lan),
-        data_val: new Date(data.data_val)
-      })
+        laboratorio: data.laboratorio || '', // Defina um valor padrão
+        nome_produto: data.nome_produto || '', // Certifique-se de que este campo não está vazio
+        forma_farmaceutica: data.forma_farmaceutica || '',
+        descricao: data.descricao || '',
+        quantidade: data.quantidade || null,
+        data_lan: data.data_lan ? new Date(data.data_lan) : null,
+        data_val: data.data_val ? new Date(data.data_val) : null,
+      });
     })
   }
 

@@ -8,7 +8,7 @@
         <div class="column">
               <mat-form-field appearance="fill">
                 <mat-label>Laboratório</mat-label>
-                <input formControlName="Laboratorio" matInput placeholder="Laboratório responsável">
+                <input formControlName="laboratorio" matInput placeholder="Laboratório responsável">
               </mat-form-field>
               <div class="error">
                 <!-- <span *ngIf="form.get('Laboratorio')?.hasError('required') && form.get('Laboratorio')?.touched">
@@ -31,7 +31,7 @@
             </div>
             <mat-form-field appearance="fill">
                     <mat-label>Forma Farmaceutica</mat-label>
-                    <mat-select formControlName="forma_Farmaceutica">
+                    <mat-select formControlName="forma_farmaceutica">
                       <mat-option *ngFor="let item of tipoForma" [value]="item">
                         {{item}}
                       </mat-option>
@@ -61,6 +61,18 @@
           <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Data de Fabricação</mat-label>
             <input formControlName="data_lan" matInput [matDatepicker]="picker">
+            <mat-hint></mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #picker></mat-datepicker>
+          </mat-form-field>
+          <div class="error">
+           
+          </div>
+        </div>
+        <div class="column">
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Data de Vencimento</mat-label>
+            <input formControlName="data_val" matInput [matDatepicker]="picker">
             <mat-hint></mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker touchUi #picker></mat-datepicker>
