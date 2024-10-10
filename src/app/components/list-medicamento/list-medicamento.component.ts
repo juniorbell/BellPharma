@@ -110,15 +110,15 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
   }
 
   gerarPDF() {
-    this.showTable = false;
-    const data = document.getElementById('tabela-medicamentos'); // O ID da tabela
-  
+    this.showTable = false; // Oculta a tabela
+    const logo = document.getElementById('logo') as HTMLImageElement;
+    const data = document.getElementById('tabela-medicamentos'); 
     if (data) {
       html2canvas(data).then(canvas => {
         const imgData = canvas.toDataURL('image/png');
         const pdf = new jsPDF();
   
-        const imgWidth = 190; // Ajuste a largura conforme necessário
+        const imgWidth = 190; 
         const pageHeight = pdf.internal.pageSize.height;
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
         let heightLeft = imgHeight;
@@ -135,13 +135,17 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
           heightLeft -= pageHeight;
         }
   
-        pdf.save('tabela_medicamentos.pdf');
+        pdf.save('tabela de medicamentos.pdf');
+  
+        // Mostra a tabela novamente após a geração do PDF
+        this.showTable = true; 
       }).catch(error => {
         console.error('Erro ao gerar PDF:', error);
+        this.showTable = true; // Garante que a tabela seja mostrada em caso de erro
       });
     } else {
       console.error('Tabela não encontrada!');
-      this.showTable = false;
+      this.showTable = true; // Garante que a tabela seja mostrada em caso de erro
     }
-  } 
-}
+  }
+ }  

@@ -64,8 +64,6 @@
           
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            <tr *ngFor="let medicamento of dataSource.data">
-
           </table>
           
       
@@ -74,37 +72,37 @@
   </mat-card>
 
   <div class="example-button-row" style="text-align: end;">
-    <button class="imprimir-btn btn-2" (click)="gerarPDF()"><i class="fa-solid fa-print"></i></button>
+ 
+    <button class="imprimir-btn btn-2" (click)="gerarPDF()"><i class="fa-solid fa-print"></i></button>    
+  </div>
+  <div class="table-container">
+    <img src="../../../assets/logo/logo.png" alt="Logo" class="logo" />
+    <table id="tabela-medicamentos">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Forma Farmaceutica</th>
+          <th>Descrição</th>
+          <th>Laboratório</th>
+          <th>Quantidade</th>
+          <th>Data de Lançamento</th>
+          <th>Data de Validade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let medicamento of dataSource.data">
+          <td>{{medicamento.nome}}</td>
+          <td>{{medicamento.forma_farmaceutica}}</td>
+          <td>{{medicamento.descricao}}</td>
+          <td>{{medicamento.laboratorio}}</td>
+          <td>{{medicamento.quantidade}}</td>
+          <td>{{medicamento.data_lan | date:'dd/MM/yyyy'}}</td>
+          <td>{{medicamento.data_val | date:'dd/MM/yyyy'}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
-<div *ngIf="showTable">
-  <table id="tabela-medicamentos">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Forma Farmaceutica</th>
-        <th>Descrição</th>
-        <th>Laboratório</th>
-        <th>Quantidade</th>
-        <th>Data de Lançamento</th>
-        <th>Data de Validade</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let medicamento of dataSource.data">
-        <td>{{medicamento.nome}}</td>
-        <td>{{medicamento.forma_farmaceutica}}</td>
-        <td>{{medicamento.descricao}}</td>
-        <td>{{medicamento.laboratorio}}</td>
-        <td>{{medicamento.quantidade}}</td>
-        <td>{{medicamento.data_lan | date:'dd/MM/yyyy'}}</td>
-        <td>{{medicamento.data_val | date:'dd/MM/yyyy'}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-
 
 
  
