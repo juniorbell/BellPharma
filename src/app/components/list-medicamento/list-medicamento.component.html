@@ -64,20 +64,22 @@
           
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+       
           </table>
+          <mat-paginator style="justify-content: center;"
+          [pageSizeOptions]="[5, 10, 15, 20]"
+          [pageSize]="10"
+          showFirstLastButtons>
+        </mat-paginator>
           
-      
     </mat-card-content>
-
   </mat-card>
 
   <div class="example-button-row" style="text-align: end;">
  
     <button class="imprimir-btn btn-2" (click)="gerarPDF()"><i class="fa-solid fa-print"></i></button>    
-  </div>
-  <div class="table-container">
-    <img src="../../../assets/logo/logo.png" alt="Logo" class="logo" />
-    <table id="tabela-medicamentos">
+
+    <table id="tabela-medicamentos" class="hidden">
       <thead>
         <tr>
           <th>Nome</th>
@@ -101,7 +103,9 @@
         </tr>
       </tbody>
     </table>
-  </div>
+</div>
+<div class="example-button-row" style="text-align: left;">
+ </div>
 </div>
 
 

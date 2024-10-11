@@ -20,7 +20,6 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['nome', 'forma_farmaceutica', 'descricao', 'laboratorio', 'quantidade', 'data_lan', 'data_val', 'acoes'];
   dataSource: MatTableDataSource<Medicamento>;
   loading: boolean = false;
-  showTable: boolean = true;
   showSplash = true;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -110,10 +109,9 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
   }
 
   gerarPDF() {
-    this.showTable = false; // Oculta a tabela
-    const logo = document.getElementById('logo') as HTMLImageElement;
     const data = document.getElementById('tabela-medicamentos'); 
     if (data) {
+      data.classList.remove('hidden'); // Remove a classe oculta
       html2canvas(data).then(canvas => {
         const imgData = canvas.toDataURL('image/png');
         const pdf = new jsPDF();
@@ -136,16 +134,12 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
         }
   
         pdf.save('tabela de medicamentos.pdf');
-  
-        // Mostra a tabela novamente após a geração do PDF
-        this.showTable = true; 
+        data.classList.add('hidden'); // Adiciona a classe de volta após a geração do PDF
       }).catch(error => {
         console.error('Erro ao gerar PDF:', error);
-        this.showTable = true; // Garante que a tabela seja mostrada em caso de erro
       });
     } else {
       console.error('Tabela não encontrada!');
-      this.showTable = true; // Garante que a tabela seja mostrada em caso de erro
     }
   }
  }  
