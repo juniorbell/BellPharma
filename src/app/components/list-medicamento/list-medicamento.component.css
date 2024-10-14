@@ -101,34 +101,6 @@ button {
    4px 4px 5px 0px rgba(0,0,0,.1);
   outline: none;
 }
-
-/* ::ng-deep .mat-mdc-paginator-container{
-  background-color: rgb(255, 255, 255);
-  color: #e0b835;
-  border-radius: 30px;
-  border: 3px solid #e0b835;
-  width: 100px;
-  margin-left: 94rem;
-  margin-right: 5px;
-  margin-top: 2rem;
-  width: 50%;
-
-}
-
-::ng-deep .mat-mdc-paginator-range-actions{
-  background-color: #e0b835;
-  border-radius: 50px;
-  color: #fff;
-} */
-
-::ng-deep .mat-mdc-form-field-infix {
-  background-color: transparent;
-  border-radius: 20px;
-}
-/* ::ng--deep .mat-mdc-paginator{
-  width: 50%;
-} */
-
 .titulo{
   color: #e0b835;
   font-family: 'Bebas Neue', sans-serif;
@@ -185,12 +157,10 @@ button {
 }
 
 
-.mat-paginator {
-  display: flex;
-  justify-content: flex-start; /* Alinha o paginator à esquerda */
+::ng--deep .mat-paginator {
   margin-top: 16px; /* Espaçamento superior para separação da tabela */
 }
 
-.mat-paginator .mat-paginator-range-label {
+::ng--deep .mat-paginator .mat-paginator-range-label {
   margin: 0; /* Remove margens do rótulo da faixa */
 }

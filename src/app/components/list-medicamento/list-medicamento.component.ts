@@ -21,6 +21,7 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<Medicamento>;
   loading: boolean = false;
   showSplash = true;
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -33,6 +34,13 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.showSplash = false;
     }, 1500);
+    this.dataSource.filterPredicate = (data: Medicamento, filter: string) => {
+      return data.quantidade.toString().toLowerCase().includes(filter) ||
+             data.nome.toLowerCase().includes(filter) ||
+             data.forma_farmaceutica.toLowerCase().includes(filter) ||
+             data.descricao.toLowerCase().includes(filter) ||
+             data.laboratorio.toLowerCase().includes(filter);
+    };
   }
 
   ngAfterViewInit() {
@@ -47,11 +55,12 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
       this.dataSource.sort = this.sort;
     });
   }
+  
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
+    console.log( 'filtro aplicando', filterValue)
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
@@ -79,7 +88,7 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
       showCancelButton: true,
       confirmButtonText: 'Excluir',
       cancelButtonText: 'Cancelar'
-    }).then((result) => { 
+    }).then((result) => {
       if (result.isConfirmed) {
         this._medicamentoService.deleteMedicamento(id).subscribe(() => {
           this.obterMedicamentos();
@@ -109,7 +118,7 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
   }
 
   gerarPDF() {
-    const data = document.getElementById('tabela-medicamentos'); 
+    const data = document.getElementById('tabela-medicamentos');
     if (data) {
       data.classList.remove('hidden'); // Remove a classe oculta
       html2canvas(data).then(canvas => {
@@ -133,7 +142,7 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
           heightLeft -= pageHeight;
         }
   
-        pdf.save('tabela de medicamentos.pdf');
+        pdf.save('tabela_de_medicamentos.pdf');
         data.classList.add('hidden'); // Adiciona a classe de volta após a geração do PDF
       }).catch(error => {
         console.error('Erro ao gerar PDF:', error);
@@ -142,4 +151,4 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
       console.error('Tabela não encontrada!');
     }
   }
- }  
+}
