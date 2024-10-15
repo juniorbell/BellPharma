@@ -56,31 +56,48 @@
 
 
 
-  <div class="example-button-row" style="text-align: end;">
-    <button class="imprimir-btn btn-2" (click)="gerarPDF()"><i class="fa-solid fa-print"></i></button>
-    <table id="tabela-medicamentos" class="hidden">
+<div class="example-button-row" style="text-align: end;">
+  <button class="imprimir-btn btn-2" (click)="gerarPDF()">
+      <i class="fa-solid fa-print"></i>
+  </button>
+  
+  <table id="tabela-medicamentos" class="hidden">
       <thead>
-        <tr>
-          <th>Nome</th>
-          <th>Forma Farmaceutica</th>
-          <th>Descrição</th>
-          <th>Laboratório</th>
-          <th>Quantidade</th>
-          <th>Data de Lançamento</th>
-          <th>Data de Validade</th>
-        </tr>
+          <tr>
+              <th>Nome</th>
+              <th>Forma Farmacêutica</th>
+              <th>Descrição</th>
+              <th>Laboratório</th>
+              <th>Quantidade</th>
+              <th>Data de Lançamento</th>
+              <th>Data de Validade</th>
+          </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let medicamento of dataSource.data">
-          <td>{{medicamento.nome}}</td>
-          <td>{{medicamento.forma_farmaceutica}}</td>
-          <td>{{medicamento.descricao}}</td>
-          <td>{{medicamento.laboratorio}}</td>
-          <td>{{medicamento.quantidade}}</td>
-          <td>{{medicamento.data_lan | date:'dd/MM/yyyy'}}</td>
-          <td>{{medicamento.data_val | date:'dd/MM/yyyy'}}</td>
-        </tr>
+          <tr *ngFor="let medicamento of dataSource.data">
+              <td>{{medicamento.nome}}</td>
+              <td>{{medicamento.forma_farmaceutica}}</td>
+              <td>{{medicamento.descricao}}</td>
+              <td>{{medicamento.laboratorio}}</td>
+              <td>{{medicamento.quantidade}}</td>
+              <td>{{medicamento.data_lan | date:'dd/MM/yyyy'}}</td>
+              <td>{{medicamento.data_val | date:'dd/MM/yyyy'}}</td>
+          </tr>
       </tbody>
-    </table>
-  </div>
+      <tfoot>
+        <tr>
+            <td colspan="3" style="text-align: left;">
+              <img src="./../../assets/logo/LOGO FROM.png" alt="logo">
+            </td>
+            <td  style="text-align: left;">
+                {{ currentDate | date:'dd/MM/yyyy' }}
+            </td>
+            <td  style="text-align: right;">
+                {{ currentTime | date:'HH:mm' }}
+            </td>
+        </tr>
+    </tfoot>
+  </table>
+</div>
+
 </div>

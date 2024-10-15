@@ -22,6 +22,8 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
   dataSource: MatTableDataSource<Medicamento>;
   loading: boolean = false;
   showSplash = true;
+  currentDate: Date;
+  currentTime: Date;
 
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -29,7 +31,8 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
 
   constructor(public dialog: MatDialog, private _medicamentoService: MedicamentoService, private _snackBar: MatSnackBar, private http: HttpClient) {
     this.dataSource = new MatTableDataSource();
-
+    this.currentDate = new Date()
+    this.currentTime = new Date()
   }
 
 
@@ -131,6 +134,9 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
   
         pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
         heightLeft -= pageHeight;
+        this.currentDate = new Date();
+        this.currentTime = new Date();
+
   
         while (heightLeft >= 0) {
           position = heightLeft - imgHeight;
@@ -139,8 +145,8 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
           heightLeft -= pageHeight;
         }
   
-        pdf.save('tabela_de_medicamentos.pdf');
-        data.classList.add('hidden'); // Adiciona a classe de volta após a geração do PDF
+        pdf.save('tabela de medicamentos.pdf');
+        data.classList.add('hidden'); 
       }).catch(error => {
         console.error('Erro ao gerar PDF:', error);
       });

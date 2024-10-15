@@ -152,15 +152,9 @@ button {
 
 
 
-.hidden{
-  display: none;
+
+.hidden {
+  display: none; /* Esconde a tabela até que o PDF seja gerado */
 }
 
 
-::ng--deep .mat-paginator {
-  margin-top: 16px; /* Espaçamento superior para separação da tabela */
-}
-
-::ng--deep .mat-paginator .mat-paginator-range-label {
-  margin: 0; /* Remove margens do rótulo da faixa */
-}
