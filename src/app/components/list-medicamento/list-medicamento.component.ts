@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { HttpClient } from '@angular/common/http';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
@@ -8,7 +9,7 @@ import { Medicamento } from 'src/app/interfaces/medicamento';
 import { MedicamentoService } from 'src/app/services/medicamento.service';
 import { EditMedicamentoComponent } from '../edit-medicamento/edit-medicamento.component';
 import Swal from 'sweetalert2';
-import jsPDF from 'jspdf';
+import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas';
 
 @Component({
@@ -22,25 +23,21 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
   loading: boolean = false;
   showSplash = true;
 
+  
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public dialog: MatDialog, private _medicamentoService: MedicamentoService, private _snackBar: MatSnackBar) {
+  constructor(public dialog: MatDialog, private _medicamentoService: MedicamentoService, private _snackBar: MatSnackBar, private http: HttpClient) {
     this.dataSource = new MatTableDataSource();
+
   }
+
 
   ngOnInit(): void {
     this.obterMedicamentos();
     setTimeout(() => {
       this.showSplash = false;
     }, 1500);
-    this.dataSource.filterPredicate = (data: Medicamento, filter: string) => {
-      return data.quantidade.toString().toLowerCase().includes(filter) ||
-             data.nome.toLowerCase().includes(filter) ||
-             data.forma_farmaceutica.toLowerCase().includes(filter) ||
-             data.descricao.toLowerCase().includes(filter) ||
-             data.laboratorio.toLowerCase().includes(filter);
-    };
   }
 
   ngAfterViewInit() {

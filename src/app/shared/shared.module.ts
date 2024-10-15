@@ -24,6 +24,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 
@@ -73,7 +74,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     HttpClientModule,
     MatProgressBarModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NgxPaginationModule
+
+
 
   ]
 })

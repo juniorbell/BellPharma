@@ -50,9 +50,12 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
+
     </mat-card-content>
-    <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]"></mat-paginator>
-  </mat-card>
+</mat-card><mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+
+
   <div class="example-button-row" style="text-align: end;">
     <button class="imprimir-btn btn-2" (click)="gerarPDF()"><i class="fa-solid fa-print"></i></button>
     <table id="tabela-medicamentos" class="hidden">

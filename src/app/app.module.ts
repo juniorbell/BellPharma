@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { LayoutModule } from '@angular/cdk/layout';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,6 +11,9 @@ import { ListMedicamentoComponent } from './components/list-medicamento/list-med
 import { SharedModule } from './shared/shared.module';
 import { HeaderComponent } from './components/header/header.component';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
+
 
 
 
@@ -23,7 +25,7 @@ import { SplashScreenComponent } from './splash-screen/splash-screen.component';
     ListMedicamentoComponent,
     EditMedicamentoComponent,
     HeaderComponent,
-    SplashScreenComponent,
+    SplashScreenComponent
 
   ],
   imports: [
@@ -32,10 +34,9 @@ import { SplashScreenComponent } from './splash-screen/splash-screen.component';
     LayoutModule,
     BrowserAnimationsModule,
     SharedModule,
-
-
-
-
+    NgxPaginationModule
+    
+    
 
   ],
   providers: [{

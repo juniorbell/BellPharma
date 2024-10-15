@@ -37,6 +37,7 @@
     "materialize-css": "^1.0.0-rc.2",
     "mysql": "^2.18.1",
     "ng2-charts": "^6.0.1",
+    "ngx-pagination": "^6.0.3",
     "rxjs": "~7.8.0",
     "sequelize": "^6.31.1",
     "sqlite3": "^5.1.6",
