@@ -46,6 +46,7 @@ export class EditMedicamentoComponent implements OnInit {
     this.loading = true;
     if (this.id === undefined) {
       this._medicamentoService.addMedicamento(medicamento).subscribe(() => {
+        this.loading = false;
         this.msgExito('Adicionada com sucesso');
         this.dialogRef.close(true); // Fechar o diálogo após a adição
       }, error => {
