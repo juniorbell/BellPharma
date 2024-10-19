@@ -12,6 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { HeaderComponent } from './components/header/header.component';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -25,7 +26,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ListMedicamentoComponent,
     EditMedicamentoComponent,
     HeaderComponent,
-    SplashScreenComponent
+    SplashScreenComponent,
+    LoginComponent
 
   ],
   imports: [
