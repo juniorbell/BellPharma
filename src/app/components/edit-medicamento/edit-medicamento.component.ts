@@ -22,8 +22,8 @@ export class EditMedicamentoComponent implements OnInit {
     private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.maxDate = new Date();
     this.form = this.fb.group({
-      laboratorio: [null, Validators.required],           
-      nome: [null, Validators.required],          
+      laboratorio: [null],        
+      nome: [null],         
       forma_farmaceutica: [null],    
       descricao: [null],             
       quantidade: [null],            
@@ -48,20 +48,20 @@ export class EditMedicamentoComponent implements OnInit {
       this._medicamentoService.addMedicamento(medicamento).subscribe(() => {
         this.loading = false;
         this.msgExito('Adicionada com sucesso');
-        this.dialogRef.close(true); // Fechar o diálogo após a adição
+        this.dialogRef.close(true);
       }, error => {
         console.error('Erro ao adicionar medicamento:', error);
         this.loading = false;
-        this.addMedicamento(); // Mensagem de erro
+        this.addMedicamento();
       });
     } else {
       this._medicamentoService.updateMedicamento(this.id, medicamento).subscribe(() => {
         this.msgExito('atualizada com sucesso');
-        this.dialogRef.close(true); // Fechar o diálogo após a atualização
+        this.dialogRef.close(true);
       }, error => {
         console.error('Erro ao atualizar medicamento:', error);
         this.loading = false;
-        this.addMedicamento(); // Mensagem de erro
+        this.addMedicamento();
       });
     }
   } 

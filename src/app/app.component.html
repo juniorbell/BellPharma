@@ -1,1 +1,2 @@
-<app-header></app-header>
+<app-header *ngIf="auth.isAuthenticated$ | async"></app-header>
+<router-outlet></router-outlet>

@@ -13,6 +13,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { LoginComponent } from './login/login.component';
+import { AuthModule } from '@auth0/auth0-angular';
+import { FormsModule } from '@angular/forms';
+import { AuthService } from './auth/auth.service';
+
 
 
 
@@ -32,16 +36,25 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     LayoutModule,
     BrowserAnimationsModule,
     SharedModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    AuthModule.forRoot({
+      domain: 'dev-m1u3ec0lxneslh1m.us.auth0.com',
+      clientId: 'g8KCs3Z5yytXVIvO6SurYiNaASl4bvkn',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+       }),
+    AppRoutingModule,
+    FormsModule
+
     
     
 
   ],
-  providers: [{
+  providers: [AuthService, {
     provide: MAT_DATE_LOCALE, useValue: 'pt'
   }],
   bootstrap: [AppComponent]

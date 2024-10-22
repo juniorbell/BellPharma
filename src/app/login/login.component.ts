@@ -1,22 +1,26 @@
 import { Component } from '@angular/core';
-import { AuthService } from '@auth0/auth0-angular';
-
+import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  template: `
-      <button (click)="login()">Logi</login>
-  `,
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  username: string = '';
+  password: string = '';
+  errorMessage: string = '';
 
-  constructor (private auth: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-
-
-  login() {
-    this.auth.loginWithRedirect();
+  onLogin() {
+    const user = this.authService.login(this.username, this.password);
+    if (user) {
+      localStorage.setItem('userRole', user.role);
+      this.router.navigate(['/list-medicamentos']);
+    } else {
+      this.errorMessage = 'Credenciais inválidas';
+    }
   }
 
 }

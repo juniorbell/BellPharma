@@ -8,12 +8,9 @@
         <div class="column">
               <mat-form-field appearance="fill">
                 <mat-label>Laboratório</mat-label>
-                <input formControlName="laboratorio" matInput placeholder="Laboratório responsável">
+                <input formControlName="laboratorio" matInput>
               </mat-form-field>
               <div class="error">
-                <!-- <span *ngIf="form.get('Laboratorio')?.hasError('required') && form.get('Laboratorio')?.touched">
-                 Laboratório é um campo <strong>obrigatório</strong>  
-                </span> -->
               </div>
         </div>
     </div>
@@ -24,7 +21,7 @@
         <div class="column">
             <mat-form-field appearance="fill">
                 <mat-label>Nome do Medicamento</mat-label>
-                <input formControlName="nome" matInput placeholder="Insira o nome do  medicamento">
+                <input formControlName="nome" matInput >
             </mat-form-field>
             <div class="error">
           
@@ -42,16 +39,14 @@
     
       <mat-form-field appearance="fill">
         <mat-label>Descrição</mat-label>
-        <input formControlName="descricao"matInput placeholder="Insira a descrição">
+        <input formControlName="descricao"matInput >
       </mat-form-field>
       <div class="error">
-        <!-- <span *ngIf="form.get('descricao')?.hasError('required') && form.get('descricao')?.touched">
-          Descrição é um campo<strong>obrigatório</strong>  
-        </span> -->
+
       </div>
       <mat-form-field appearance="fill">
         <mat-label>Quantidade</mat-label>
-        <input formControlName="quantidade"matInput placeholder="Coloque a quantidade">
+        <input formControlName="quantidade"matInput >
       </mat-form-field>
       <div class="error">
        

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { MatPaginator } from '@angular/material/paginator';
@@ -11,6 +11,8 @@ import { EditMedicamentoComponent } from '../edit-medicamento/edit-medicamento.c
 import Swal from 'sweetalert2';
 import jsPDF from 'jspdf'
 import html2canvas from 'html2canvas';
+import { AuthService } from '@auth0/auth0-angular';
+
 
 @Component({
   selector: 'app-list-medicamento',
@@ -28,20 +30,26 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(public dialog: MatDialog, private _medicamentoService: MedicamentoService, private _snackBar: MatSnackBar, private http: HttpClient) {
+  constructor(public dialog: MatDialog, private _medicamentoService: MedicamentoService, private _snackBar: MatSnackBar, private http: HttpClient, private auth: AuthService, private cdr: ChangeDetectorRef) {
     this.dataSource = new MatTableDataSource();
     this.currentDate = new Date()
     this.currentTime = new Date()
   }
 
+  isAdmin: boolean = false;
+
 
   ngOnInit(): void {
+    this.auth.user$.subscribe(user => {
+      this.isAdmin = user ? user['role'] === 'admin' : false;
+      console.log('User role:', user ? user['role'] : 'No user');
+      this.cdr.detectChanges();
+    });
     this.obterMedicamentos();
     setTimeout(() => {
       this.showSplash = false;
     }, 1500);
   }
-
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -152,4 +160,12 @@ export class ListMedicamentoComponent implements OnInit, AfterViewInit {
       console.error('Tabela não encontrada!');
     }
   }
+
+
+  logout() {
+    this.auth.logout().subscribe(() => {
+      window.location.href = window.location.origin;
+    })
+  }
+  
 }

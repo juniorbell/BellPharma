@@ -25,6 +25,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { AuthModule } from '@auth0/auth0-angular';
+
+
 
 
 
@@ -51,7 +54,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatProgressBarModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    AuthModule
 
   ],
   exports: [

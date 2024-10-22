@@ -1,1 +1,18 @@
-<p>login works!</p>
+<div class="login-container">
+  <h2>Login</h2>
+  <form (ngSubmit)="onLogin()">
+    <mat-form-field appearance="fill">
+      <mat-label>Usuário</mat-label>
+      <input matInput [(ngModel)]="username" name="username" required>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Senha</mat-label>
+      <input matInput [(ngModel)]="password" type="password" name="password" required>
+    </mat-form-field>
+    
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    
+    <button mat-raised-button type="submit">Entrar</button>
+  </form>
+</div>
